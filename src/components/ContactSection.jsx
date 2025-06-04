@@ -1,4 +1,5 @@
 import {
+  Github,
   Instagram,
   Linkedin,
   Mail,
@@ -12,12 +13,12 @@ import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import data from "../data/portfolio.json";
-import image from "../assets/Sadab_Photo_HD.png"
+// import image from "../assets/Sadab_Photo_HD.png"
 
 export const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { email, mobile, address } = data;
+  const { email, mobile, address, linkedin, github, emailInfo } = data;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,7 +58,7 @@ export const ContactSection = () => {
                   <Mail className="h-6 w-6 text-primary" />{" "}
                 </div>
                 <div>
-                  <h4 className="font-medium"> Email</h4>
+                  {/* <h4 className="font-medium"> Email</h4> */}
                   <a
                     href="sadabhossain_pramanik@yahoo.in"
                     className="text-muted-foreground hover:text-primary transition-colors"
@@ -71,7 +72,7 @@ export const ContactSection = () => {
                   <Phone className="h-6 w-6 text-primary" />{" "}
                 </div>
                 <div>
-                  <h4 className="font-medium"> Phone</h4>
+                  {/* <h4 className="font-medium"> Phone</h4> */}
                   <a
                     href="Mobile:+919932195224"
                     className="text-muted-foreground hover:text-primary transition-colors"
@@ -85,7 +86,7 @@ export const ContactSection = () => {
                   <MapPin className="h-6 w-6 text-primary" />{" "}
                 </div>
                 <div>
-                  <h4 className="font-medium"> Location</h4>
+                  {/* <h4 className="font-medium"> Location</h4> */}
                   <a className="text-muted-foreground hover:text-primary transition-colors">
                     {address}
                   </a>
@@ -96,36 +97,46 @@ export const ContactSection = () => {
             <div className="pt-8">
               <h4 className="font-medium mb-4"> Connect With Me</h4>
               <div className="flex space-x-4 justify-center">
-                <a href="#" target="_blank">
+                <a href={linkedin} onClick={(e) => {
+                  e.preventDefault(); // prevent native anchor behavior
+                  window.open(linkedin, '_blank', 'noopener,noreferrer');
+                }} target="_blank">
                   <Linkedin />
                 </a>
-                <a href="#" target="_blank">
-                  <Twitter />
+                <a href={github} onClick={(e) => {
+                  e.preventDefault(); // prevent native anchor behavior
+                  window.open(github, '_blank', 'noopener,noreferrer');
+                }} target="_blank">
+                  <Github />
                 </a>
-                <a href="#" target="_blank">
-                  <Linkedin />
+                <a href={email} onClick={(e) => {
+                  e.preventDefault(); // prevent native anchor behavior
+                  window.open(emailInfo, '_blank', 'noopener,noreferrer');
+                }} target="_blank">
+                  <Mail />
                 </a>
-                <a href="#" target="_blank">
+                {/* <a href="#" target="_blank">
                   <Twitch />
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
 
           <div
-            className="p-8 rounded-lg shadow-xs"
+            className="bg-card p-8 rounded-lg shadow-xs"
+            onSubmit={handleSubmit}
           >
-            <div className="h-98 overflow-hidden">
+            {/* <div className="h-98 overflow-hidden">
               <img
                 src={image}
                 alt="Image"
                 className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-200"
               />
-            </div>
-          </div>
-          {/* <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3> */}
+            </div> */}
+            {/* </div> */}
+            <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
 
-          {/* <form className="space-y-6">
+            <form className="space-y-6">
               <div>
                 <label
                   htmlFor="name"
@@ -140,7 +151,7 @@ export const ContactSection = () => {
                   name="name"
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="Pedro Machado..."
+                  placeholder="Sadab Hossain Pramanik..."
                 />
               </div>
 
@@ -158,7 +169,7 @@ export const ContactSection = () => {
                   name="email"
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="john@gmail.com"
+                  placeholder="rock@gmail.com"
                 />
               </div>
 
@@ -189,8 +200,8 @@ export const ContactSection = () => {
                 {isSubmitting ? "Sending..." : "Send Message"}
                 <Send size={16} />
               </button>
-            </form> */}
-          {/* </div> */}
+            </form>
+          </div>
         </div>
       </div>
     </section>

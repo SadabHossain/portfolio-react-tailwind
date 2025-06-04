@@ -8,9 +8,23 @@ const categories = ["all", "frontend", "backend", "tools"];
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
+  let uniqueSkills = []
+  skills.forEach(skill => {
+    let duplicate = uniqueSkills.find(e => e.name == skill.name);
+    if (!duplicate) {
+      uniqueSkills.push(skill)
+    }
+  })
+  // const filteredSkills = uniqueSkills.filter(
+  //   (skill) => activeCategory === "all" || skill.category === activeCategory
 
-  const filteredSkills = skills.filter(
-    (skill) => activeCategory === "all" || skill.category === activeCategory
+  // );
+  const filteredSkills = (activeCategory === "all") ? uniqueSkills.filter(
+    (skill) => activeCategory === "all"
+
+  ) : skills.filter(
+    (skill) => skill.category === activeCategory
+
   );
   return (
     <section id="skills" className="py-24 px-4 relative bg-secondary/30">
@@ -36,13 +50,17 @@ export const SkillsSection = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredSkills.map((skill, key) => (
             <div
               key={key}
-              className="bg-card p-6 rounded-lg shadow-xs card-hover"
             >
-              <div className="text-left mb-4">
+              <img
+                src={skill.image}
+                alt="Image"
+                className="w-20 h-auto object-cover transition-transform duration-600 group-hover:scale-200"
+              />
+              {/* <div className="text-left mb-4">
                 <h3 className="font-semibold text-lg"> {skill.name}</h3>
               </div>
               <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
@@ -56,7 +74,7 @@ export const SkillsSection = () => {
                 <span className="text-sm text-muted-foreground">
                   {skill.level}%
                 </span>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
