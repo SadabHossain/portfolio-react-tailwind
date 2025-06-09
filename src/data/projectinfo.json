@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "title": "SEMP - Software Engineer Management Tools",
+        "shot_description": "Assign. Track. Review. All in one internal tool.",
+        "description": "In-House Work Management Tool (Jira-like System) This software was developed as an internal project to streamline employee task management. Inspired by tools like Jira, it provides core functionality for assigning, tracking, and reviewing tasks within an organization.",
+        "image": "/projects/project1.png",
+        "start": "June 2019 ",
+        "end": "August 2020",
+        "team_size": "4",
+        "tags": [
+            "Vue",
+            "Javascript",
+            "Node",
+            "Express",
+            "Mysql"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Jyoti",
+        "shot_description": "Developed a loan-based e-commerce platform enabling rural customers to buy electronics on EMI.",
+        "description": "This software is a loan-based e-commerce system designed to help people in rural areas purchase electronic items—such as mobile phones, fans, and TVs—on EMI (Equated Monthly Installment) plans.",
+        "image": "/projects/project2.png",
+        "start": "September 2020",
+        "end": "October 2021",
+        "team_size": "3",
+        "tags": [
+            "React",
+            "Javascript",
+            "Node",
+            "Express",
+            "Mysql"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "BHP – Bandhan Health Program",
+        "shot_description": "Promoting safe motherhood and child nutrition in rural communities.",
+        "description": "This program aims to promote health awareness and improve the overall wellbeing of underprivileged families. It places special focus on children under five, pregnant women, lactating mothers, and adolescent girls, addressing key issues such as safe motherhood, child nutrition, personal hygiene, and sanitation.",
+        "image": "/projects/project3.png",
+        "start": "October 2021",
+        "end": "May 2022",
+        "team_size": "9",
+        "tags": [
+            "Javascript",
+            "Node",
+            "Express",
+            "Mysql"
+        ]
+    }
+]
