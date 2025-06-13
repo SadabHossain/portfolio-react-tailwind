@@ -13,25 +13,69 @@ import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import data from "../data/portfolio.json";
-// import image from "../assets/Sadab_Photo_HD.png"
+import axios from 'axios';
 
 export const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { email, mobile, address, linkedin, github, emailInfo } = data;
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
 
-  const handleSubmit = (e) => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData, [name]: value,
+    }));
+  };
+
+  const handleSubmit = async(e) => {
     e.preventDefault();
-
-    setIsSubmitting(true);
-
-    setTimeout(() => {
-      toast({
+    try {
+      const response = await axios.post('http://localhost:5000/inquiry', formData);
+      setIsSubmitting(true);
+      console.log(response)
+      if(response){
+        toast({
         title: "Message sent!",
         description: "Thank you for your message. I'll get back to you soon.",
+        });
+        setIsSubmitting(false);
+      //Reset form after submit
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
       });
+      }else{
+        toast({
+        title: "Oops! Something Went Wrong",
+        description: "Your message wasn't delivered. Please try again",
+        });
+        setIsSubmitting(false);
+      }
+    } catch (err) {
+      setIsSubmitting(true); 
+      
+      toast({
+        title: "Error Occurred",
+        description: `${err.status==423?`Excel file is currently open. Please close it before trying again.`:`Failed to save inquiry`}`,
+        });
       setIsSubmitting(false);
-    }, 1500);
+    }
+
+  //   setIsSubmitting(true);
+
+  //   setTimeout(() => {
+  //     toast({
+  //       title: "Message sent!",
+  //       description: "Thank you for your message. I'll get back to you soon.",
+  //     });
+  //     setIsSubmitting(false);
+  //   }, 1500);
   };
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
@@ -149,6 +193,8 @@ export const ContactSection = () => {
                   type="text"
                   id="name"
                   name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
                   placeholder="Sadab Hossain Pramanik..."
@@ -167,6 +213,8 @@ export const ContactSection = () => {
                   type="email"
                   id="email"
                   name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
                   placeholder="rock@gmail.com"
@@ -184,6 +232,8 @@ export const ContactSection = () => {
                 <textarea
                   id="message"
                   name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
                   placeholder="Hello, I'd like to talk about..."

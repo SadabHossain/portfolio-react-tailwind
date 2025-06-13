@@ -49,3 +49,7 @@ Your live website will be hosted on a custom subdomain (e.g. `https://your-name.
 * [Vercel](https://vercel.com/)
 
 ---
+
+## To run the server using the same package.json, we used the following library.
+* [npm install -D concurrently]
+
