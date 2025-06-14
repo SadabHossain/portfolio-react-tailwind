@@ -48,5 +48,24 @@
             "Express",
             "Mysql"
         ]
+    },
+     {
+        "id": 4,
+        "title": "US Based Project",
+        "shot_description": "Dialysis Center Digital Transformation",
+        "description": "US-based Project: A kidney dialysis center digital transformation initiative where nurses previously recorded dialysis and non-dialysis treatment details on paper flow sheets. The process was migrated to an electronic data capture system, enabling nurses to log in and record treatment data directly on iPads assigned to them individually.",
+        "image": "/projects/project4.png",
+        "start": "Jan 2023",
+        "end": "till now",
+        "team_size": "6",
+        "tags": [
+            "Javascript",
+            "Node",
+            "Express",
+            "Mongodb",
+            "Kafka",
+            "TypeScript",
+            "Microservice"
+        ]
     }
 ]

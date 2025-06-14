@@ -1,6 +1,8 @@
 import { Briefcase, Code, User } from "lucide-react";
+import cvURL from '../assets/Sadab Hossain Pramanik.pdf'
 
 export const AboutSection = () => {
+  //const {cvURL} = data;
   return (
     <section id="about" className="py-24 px-4 relative">
       {" "}
@@ -35,8 +37,9 @@ export const AboutSection = () => {
               </a>
 
               <a
-                href=""
+                href={cvURL}
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
+                download="Sadab Hossain Pramanik.pdf"
               >
                 Download CV
               </a>
